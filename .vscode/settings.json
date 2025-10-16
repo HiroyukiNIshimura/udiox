@@ -1,0 +1,19 @@
+{
+  "editor.defaultFormatter": "biomejs.biome",
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "cSpell.words": ["scrc", "termkit", "uapi", "uuidv"],
+  "[markdown]": {
+    "editor.defaultFormatter": "unifiedjs.vscode-remark"
+  }
+}
