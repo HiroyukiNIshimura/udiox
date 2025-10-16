@@ -4,6 +4,15 @@ Udioのプロンプトエンジニアリングを支援するためのTypeScript
 
 ![デモ](./demo.gif)
 
+## src/StructureData.md の Music Break Down (楽曲の構造解析)の本文
+
+ドキュメントは無償公開されてはいますが、尊厳を考慮してgithubへプッシュしていません。
+
+本家を参考に「タグ」以降の情報をMarkdownで記載します。
+https://docs.google.com/document/d/15ZmGy2JHiy7lRKq4hWFVZKogO0EM39WC2TCi3WLQ20c/edit#heading=h.j4dulgh5yo3o
+
+これは無くても動きますし、無い方がレスポンスは速いです。gpt-5-miniなどで推論を重視する場合はあると良いかもしれません。
+
 ## セットアップ
 
 ### 1. 依存関係のインストール
