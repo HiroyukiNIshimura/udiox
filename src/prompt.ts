@@ -77,7 +77,7 @@ export class Prompt {
 
     console.log('\n=== Generated Prompt ===');
     console.log(
-      `\n${data.theme} ${data.tags.map((tag) => tag.output).join(', ')}`,
+      `\n${data.theme} ${data.tags.map((tag) => tag.output).join('; ')}`,
     );
 
     console.log('\n=== Summary ===');
