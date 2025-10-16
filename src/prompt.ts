@@ -1,14 +1,11 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import cliSpinner from 'cli-spinner';
-import * as dotenv from 'dotenv';
 import OpenAI from 'openai';
 import { ParsedResponse } from 'openai/resources/responses/responses';
 import { getTextFormat, PromptSchema, PromptType } from './types';
 
 // Load environment variables
-dotenv.config();
-
 export class Prompt {
   private structureData: string;
   private model: string;

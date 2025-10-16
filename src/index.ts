@@ -1,7 +1,16 @@
 import { input, select } from '@inquirer/prompts';
+import * as dotenv from 'dotenv';
 import { Prompt } from './prompt';
 
 const main = async () => {
+  dotenv.config();
+
+  if (!process.env.OPENAI_API_KEY) {
+    console.error('.envファイルにOPENAI_API_KEYが設定されていません。');
+    process.exit(1);
+  }
+
+  require('dotenv').config();
   const model = await select({
     message: '使用するモデルを選択してください:',
     default: 'gpt-5-nano',
