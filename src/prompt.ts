@@ -81,9 +81,9 @@ export class Prompt {
     );
 
     console.log('\n=== Summary ===');
-    console.log(`\nReason: ${data.reason}`);
+    console.log(`\nReason:`);
     console.log(`\n${data.reason}`);
-    console.log('\nTags:');
+    console.log('\nTags:\n');
     for (const tag of data.tags) {
       console.log(`- ${tag.output} (${tag.explanation})`);
     }
