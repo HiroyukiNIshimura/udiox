@@ -1,6 +1,7 @@
-import { input, select } from '@inquirer/prompts';
+import { editor, input, confirm, select } from '@inquirer/prompts';
 import * as dotenv from 'dotenv';
 import { Prompt } from './prompt';
+import { styleText } from 'node:util';
 
 const main = async () => {
   dotenv.config();
@@ -47,21 +48,39 @@ const main = async () => {
 
   const b = true;
   while (b) {
-    const answer = await input({
-      message: '曲のイメージを入力してください:',
+
+    const inputType = await confirm({
+      message: '入力にviなどのエディタを使用しますか？(y/N)',
+      default: false,
     });
+
+    let answer: string;
+    if (!inputType) {
+      answer = await input({
+        message: '曲のイメージを入力してください:',
+      });
+    } else {
+      answer = await editor({
+        message: '曲のイメージをエディタで入力してください:',
+        waitForUseInput: true,
+      });
+
+      const message = styleText('cyan', answer);
+      console.log(message);
+    }
+
     if (!answer) {
       continue;
     }
 
     if (
-      answer.toLowerCase() === 'exit' ||
-      answer.toLowerCase() === 'quit' ||
-      answer.toLowerCase() === 'q'
+      answer.toLowerCase().trim() === 'exit' ||
+      answer.toLowerCase().trim() === 'quit' ||
+      answer.toLowerCase().trim() === 'q'
     ) {
       break;
     }
-    await chat.generatePrompt(answer);
+    //await chat.generatePrompt(answer);
   }
 };
 
