@@ -80,7 +80,7 @@ const main = async () => {
     ) {
       break;
     }
-    //await chat.generatePrompt(answer);
+    await chat.generatePrompt(answer);
   }
 };
 
