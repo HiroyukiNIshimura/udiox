@@ -31,6 +31,11 @@ OPENAI_API_KEY='your_openai_api_key_here'
 
 **注意:** OpenAI APIキーは[OpenAI Platform](https://platform.openai.com/api-keys)から取得できます。
 
+エディタ利用の問い合わせのデフォルトの回答
+```env
+DEFAULT_USE_EDITOR=false
+```
+
 ### 3. TypeScriptのコンパイル
 
 ```bash
@@ -50,6 +55,14 @@ npm run dev
 ```bash
 npm run prod
 ```
+
+### 入力に使用するエディタの設定
+環境変数 $EDITOR に設定されたエディタが起動されます。
+
+```
+$ export EDITOR="/snap/bin/msedit"
+```
+など設定しておくとお好みのエディタが利用可能です。
 
 ### 利用可能なモデル
 

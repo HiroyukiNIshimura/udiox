@@ -49,17 +49,28 @@ const main = async () => {
   const b = true;
   while (b) {
 
-    const inputType = await confirm({
-      message: '入力にviなどのエディタを使用しますか？(y/N)',
-      default: false,
-    });
+    let config: {
+      message: string;
+      default: boolean;
+    };
+
+    if (process.env.DEFAULT_USE_EDITOR) {
+      config = {
+        message: '入力に環境変数$EDITORのエディタを使用しますか？',
+        default: true,
+      };
+    } else {
+      config = {
+        message: '入力に環境変数$EDITORのエディタを使用しますか？',
+        default: false,
+      };
+    }
+
+    const useEditor = await confirm(config);
 
     let answer: string;
-    if (!inputType) {
-      answer = await input({
-        message: '曲のイメージを入力してください:',
-      });
-    } else {
+    if (useEditor) {
+      // エディタを使用する場合の処理
       answer = await editor({
         message: '曲のイメージをエディタで入力してください:',
         waitForUseInput: true,
@@ -67,19 +78,26 @@ const main = async () => {
 
       const message = styleText('cyan', answer);
       console.log(message);
+    } else
+    {
+      // 通常の入力を使用する場合の処理
+      answer = await input({
+        message: '曲のイメージを入力してください:',
+      });
+
+      if (
+        answer.toLowerCase().trim() === 'exit' ||
+        answer.toLowerCase().trim() === 'quit' ||
+        answer.toLowerCase().trim() === 'q'
+      ) {
+        break;
+      }
     }
 
     if (!answer) {
       continue;
     }
 
-    if (
-      answer.toLowerCase().trim() === 'exit' ||
-      answer.toLowerCase().trim() === 'quit' ||
-      answer.toLowerCase().trim() === 'q'
-    ) {
-      break;
-    }
     await chat.generatePrompt(answer);
   }
 };
