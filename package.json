@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc -p . && cp src/StructureData.md dist/",
+    "build": "npx tsc -p . && cpx src/StructureData.md dist/",
     "dev": "npx ts-node src/index.ts",
     "prod": "node dist/index.js"
   },
@@ -24,6 +24,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^24.7.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "cpx": "^1.5.0"
   }
 }

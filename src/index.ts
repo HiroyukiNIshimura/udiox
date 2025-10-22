@@ -1,7 +1,7 @@
-import { editor, input, confirm, select } from '@inquirer/prompts';
+import { styleText } from 'node:util';
+import { confirm, editor, input, select } from '@inquirer/prompts';
 import * as dotenv from 'dotenv';
 import { Prompt } from './prompt';
-import { styleText } from 'node:util';
 
 const main = async () => {
   dotenv.config();
@@ -11,7 +11,6 @@ const main = async () => {
     process.exit(1);
   }
 
-  require('dotenv').config();
   const model = await select({
     message: '使用するモデルを選択してください:',
     default: 'gpt-5-nano',
@@ -46,9 +45,7 @@ const main = async () => {
 
   const chat = new Prompt(model);
 
-  const b = true;
-  while (b) {
-
+  while (true) {
     let config: {
       message: string;
       default: boolean;
@@ -78,8 +75,7 @@ const main = async () => {
 
       const message = styleText('cyan', answer);
       console.log(message);
-    } else
-    {
+    } else {
       // 通常の入力を使用する場合の処理
       answer = await input({
         message: '曲のイメージを入力してください:',
